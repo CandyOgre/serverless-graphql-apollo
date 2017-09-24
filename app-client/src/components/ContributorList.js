@@ -1,26 +1,27 @@
-import React, { Component } from 'react'
-import Contributor from './Contributor'
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 import {
     gql,
     graphql,
 } from 'react-apollo';
 
+import Contributor from './Contributor';
 
 const ContributorList = ({ data: {loading, error, getContributorFeed }}) => {
 
     if (loading) {
-        return <p>Loading ...</p>;
+        return <Text>Loading ...</Text>;
     }
     if (error) {
-        return <p>{error.message}</p>;
+        return <Text>{error.message}</Text>;
     }
 
     return (
-        <div>
+        <View>
             {getContributorFeed.map(user => (
                 <Contributor key={user.name} user={user}/>
             ))}
-        </div>
+        </View>
     );
 };
 
@@ -33,4 +34,4 @@ export const ContributorQuery = gql`
   }
 `;
 
-export default graphql(ContributorQuery,)(ContributorList);
+export default graphql(ContributorQuery)(ContributorList);

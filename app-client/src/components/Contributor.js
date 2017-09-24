@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { View, Text } from 'react-native';
 
-class Contributor extends Component {
+class Contributor extends React.Component {
     render() {
         return (
-            <div>
-                <div>{this.props.user.name}</div>
-            </div>
+            <View>
+                <Text>{this.props.user.name}</Text>
+            </View>
         );
     }
 }
 
-export default Contributor
+export default Contributor;
